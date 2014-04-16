@@ -18,6 +18,7 @@ var SolidColor = require('../lib/SolidColor');
 var ShowColors = require('../lib/ShowColors');
 var Textured = require('../lib/Textured');
 var FlatToonShading = require('../lib/FlatToonShading');
+var MatCap = require('../lib/MatCap');
 
 var DPI = 2;
 
@@ -46,6 +47,7 @@ Window.create({
     this.meshes.push(new Mesh(sphere, new ShowColors(), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new Textured({ texture: Texture2D.load('assets/plask.png') }), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: Texture2D.load('assets/palette_green.png') }), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new MatCap({ texture: Texture2D.load('assets/matcap.jpg') }), { triangles: true }));
   },
   draw: function() {
     glu.clearColorAndDepth(Color.Black);
