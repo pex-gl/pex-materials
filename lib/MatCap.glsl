@@ -7,21 +7,14 @@ uniform float pointSize;
 attribute vec3 position;
 attribute vec3 normal;
 
-varying vec2 vN;
+varying vec3 e;
+varying vec3 n;
 
 void main() {
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 
-  vec3 e = normalize(vec3(modelViewMatrix * vec4(position, 1.0)));
-  vec3 n = normalize(vec3(normalMatrix * vec4(normal, 1.0)));
-
-  vec3 r = reflect(e, n);
-  float m = 2.0 * sqrt(
-      pow(r.x, 2.0) +
-      pow(r.y, 2.0) +
-      pow(r.z + 1.0, 2.0)
-  );
-  vN = r.xy / m + 0.5;
+  e = normalize(vec3(modelViewMatrix * vec4(position, 1.0)));
+  n = normalize(vec3(normalMatrix * vec4(normal, 1.0)));
 }
 
 #endif
@@ -30,10 +23,18 @@ void main() {
 
 uniform sampler2D texture;
 
-varying vec2 vN;
+varying vec3 e;
+varying vec3 n;
 
 void main() {
-  vec3 base = texture2D( texture, vN ).rgb;
+  vec3 r = reflect(e, n);
+  float m = 2.0 * sqrt(
+      pow(r.x, 2.0) +
+      pow(r.y, 2.0) +
+      pow(r.z + 1.0, 2.0)
+  );
+  vec2 N = r.xy / m + 0.5;
+  vec3 base = texture2D( texture, N ).rgb;
   gl_FragColor = vec4( base, 1.0 );
 }
 
