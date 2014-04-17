@@ -21,7 +21,7 @@
     "pex-color": "0.0.1"
   },
   "dependencies": {
-    "merge": "1.1.2"
+    "extend": "1.2.1"
   },
   "repository": {
     "type": "git",
