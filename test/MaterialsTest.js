@@ -11,6 +11,7 @@ var PerspectiveCamera = glu.PerspectiveCamera;
 var Arcball = glu.Arcball;
 var Color = color.Color;
 var Vec3 = geom.Vec3;
+var Vec2 = geom.Vec2;
 var Texture2D = glu.Texture2D;
 
 var ShowNormals = require('../lib/ShowNormals');
@@ -42,12 +43,16 @@ Window.create({
     })
     sphere.addAttrib('colors', 'color', colors);
 
+    var texture2D = Texture2D.load('assets/plask.png', { repeat: true, mipmap: true });
+    var colorBands = Texture2D.load('assets/palette_green.png');
+    var mapCap = Texture2D.load('assets/matcap.jpg');
+
     this.meshes.push(new Mesh(sphere, new SolidColor({ color: Color.Red }), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new ShowNormals(), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new ShowColors(), { triangles: true }));
-    this.meshes.push(new Mesh(sphere, new Textured({ texture: Texture2D.load('assets/plask.png') }), { triangles: true }));
-    this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: Texture2D.load('assets/palette_green.png') }), { triangles: true }));
-    this.meshes.push(new Mesh(sphere, new MatCap({ texture: Texture2D.load('assets/matcap.jpg') }), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new Textured({ texture: texture2D, scale: new Vec2(5, 5) }), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new MatCap({ texture: mapCap }), { triangles: true }));
   },
   draw: function() {
     glu.clearColorAndDepth(Color.Black);
