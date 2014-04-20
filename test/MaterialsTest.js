@@ -56,7 +56,7 @@ Window.create({
   },
   draw: function() {
     glu.clearColorAndDepth(Color.Black);
-    glu.enableDepthWriteAndRead(true);
+    glu.enableDepthReadAndWrite(true);
 
     var cols = 3;
     var rows = 3;
