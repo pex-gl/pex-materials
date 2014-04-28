@@ -8,3 +8,5 @@ module.exports.SkyBox = require('./lib/SkyBox');
 module.exports.SkyBoxEnvMap = require('./lib/SkyBoxEnvMap');
 module.exports.FlatToonShading = require('./lib/FlatToonShading');
 module.exports.MatCap = require('./lib/MatCap');
+module.exports.Diffuse = require('./lib/Diffuse');
+module.exports.BlinnPhong = require('./lib/BlinnPhong');

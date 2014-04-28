@@ -20,6 +20,8 @@ var ShowColors = require('../lib/ShowColors');
 var Textured = require('../lib/Textured');
 var FlatToonShading = require('../lib/FlatToonShading');
 var MatCap = require('../lib/MatCap');
+var Diffuse = require('../lib/Diffuse');
+var BlinnPhong = require('../lib/BlinnPhong');
 
 var DPI = 2;
 
@@ -53,6 +55,8 @@ Window.create({
     this.meshes.push(new Mesh(sphere, new Textured({ texture: texture2D, scale: new Vec2(5, 5) }), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
     this.meshes.push(new Mesh(sphere, new MatCap({ texture: mapCap }), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new Diffuse(), { triangles: true }));
+    this.meshes.push(new Mesh(sphere, new BlinnPhong(), { triangles: true }));
   },
   draw: function() {
     glu.clearColorAndDepth(Color.Black);
