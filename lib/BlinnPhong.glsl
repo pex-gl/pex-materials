@@ -56,7 +56,7 @@ void main() {
   float NdotL = max(0.0, (dot(N, L) + wrap) / (1.0 + wrap));
   vec4 color = ambientColor + NdotL * diffuseColor;
 
-  float specular = 0;
+  float specular = 0.0;
   if (useBlinnPhong)
     specular = blinnPhong(L, E, N);
   else
