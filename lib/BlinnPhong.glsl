@@ -40,12 +40,12 @@ varying vec3 vEyePos;
 
 float phong(vec3 L, vec3 E, vec3 N) {
   vec3 R = reflect(-L, N);
-  return dot(R, E);
+  return max(0.0, dot(R, E));
 }
 
 float blinnPhong(vec3 L, vec3 E, vec3 N) {
   vec3 halfVec = normalize(L + E);
-  return dot(halfVec, N);
+  return max(0.0, dot(halfVec, N));
 }
 
 void main() {
