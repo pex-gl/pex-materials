@@ -2,7 +2,6 @@
   "name": "pex-materials",
   "version": "0.0.2",
   "description": "Additional glsl materials for the pex library",
-  "homepage": "https://github.com/vorg/pex-materials",
   "keywords": [
     "geometry",
     "3d",
@@ -28,6 +27,6 @@
     "url": "https://github.com/vorg/pex-materials.git"
   },
   "bugs": "https://github.com/vorg/pex-materials/issues",
-  "homepage": "https://github.com/vorg/pex-materials.git",
+  "homepage": "https://github.com/vorg/pex-materials",
   "license": "MIT"
 }
