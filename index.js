@@ -1,6 +1,7 @@
 module.exports.SolidColor = require('./lib/SolidColor');
 module.exports.ShowNormals = require('./lib/ShowNormals');
 module.exports.ShowColors = require('./lib/ShowColors');
+module.exports.ShowPosition = require('./lib/ShowPosition');
 module.exports.Textured = require('./lib/Textured');
 module.exports.TexturedCubeMap = require('./lib/TexturedCubeMap');
 module.exports.TexturedEnvMap = require('./lib/TexturedEnvMap');
