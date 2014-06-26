@@ -2,6 +2,7 @@ module.exports.SolidColor = require('./lib/SolidColor');
 module.exports.ShowNormals = require('./lib/ShowNormals');
 module.exports.ShowColors = require('./lib/ShowColors');
 module.exports.Textured = require('./lib/Textured');
+module.exports.TexturedTriPlanar = require('./lib/TexturedTriPlanar');
 module.exports.TexturedCubeMap = require('./lib/TexturedCubeMap');
 module.exports.TexturedEnvMap = require('./lib/TexturedEnvMap');
 module.exports.SkyBox = require('./lib/SkyBox');
