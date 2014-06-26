@@ -17,10 +17,11 @@ void main() {
 
 uniform sampler2D texture;
 uniform vec2 scale;
+uniform vec4 color;
 varying vec2 vTexCoord;
 
 void main() {
-  gl_FragColor = texture2D(texture, vTexCoord * scale);
+  gl_FragColor = texture2D(texture, vTexCoord * scale) * color;
 }
 
 #endif

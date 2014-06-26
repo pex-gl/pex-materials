@@ -12,8 +12,9 @@ varying vec4 vColor;
 void main() {
   vec4 pos = modelViewMatrix * vec4(position, 1.0);
   gl_Position = projectionMatrix * pos;
-  float depth = clamp((-pos.z - near) / (far - near), 0.0, 1.0);
-  vColor = mix(nearColor, farColor, depth);
+  float depth = (length(pos.xyz) - near)/(far - near);
+  vColor.rgb = vec3(depth);
+  vColor.a = length(pos.xyz);
 }
 
 #endif
@@ -21,9 +22,11 @@ void main() {
 #ifdef FRAG
 
 varying vec4 vColor;
+uniform float far;
 
 void main() {
-  gl_FragColor = vColor;
+  gl_FragColor.rgb = vColor.rgb;
+  gl_FragColor.a = vColor.a;
 }
 
 #endif
