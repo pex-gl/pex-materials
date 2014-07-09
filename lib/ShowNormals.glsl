@@ -10,7 +10,7 @@ varying vec4 vColor;
 void main() {
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   gl_PointSize = pointSize;
-  vec3 N = (normalMatrix * vec4(normal, 1.0)).xyz;
+  vec3 N = normalize((normalMatrix * vec4(normal, 1.0)).xyz);
   vColor = vec4(N * 0.5 + 0.5, 1.0);
 }
 
