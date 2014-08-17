@@ -17,7 +17,7 @@ void main() {
   float depth = length(pos.xyz);
 
   float A = -(far + near) / (far - near); //projectionMatrix[2].z;
-  float B = -2 * far * near / (far - near); //projectionMatrix[3].z;
+  float B = -2.0 * far * near / (far - near); //projectionMatrix[3].z;
 
   depth  = 0.5 * (-A * depth + B) / depth + 0.5;
 
