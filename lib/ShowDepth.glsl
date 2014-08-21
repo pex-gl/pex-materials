@@ -9,19 +9,26 @@ uniform vec4 nearColor;
 attribute vec3 position;
 varying vec4 vColor;
 
-//http://stackoverflow.com/questions/6652253/getting-the-true-z-value-from-the-depth-buffer
+float eyeSpaceDepthToNDC(float zEye) {
+  float A = -(far + near) / (far - near); //projectionMatrix[2].z
+  float B = -2.0 * far * near / (far - near); //projectionMatrix[3].z; //
+
+  float zNDC = (A * zEye + B) / -zEye;
+  return zNDC;
+}
+
 void main() {
-  vec4 pos = modelViewMatrix * vec4(position, 1.0);
-  gl_Position = projectionMatrix * pos;
+  //Z in Normalized Device Coordinates math from http://www.songho.ca/opengl/gl_projectionmatrix.html
+  vec4 ecPos = modelViewMatrix * vec4(position, 1.0);
+  gl_Position = projectionMatrix * ecPos;
 
-  float depth = length(pos.xyz);
+  float zEye = ecPos.z;
+  float zNDC = eyeSpaceDepthToNDC(zEye);
 
-  float A = -(far + near) / (far - near); //projectionMatrix[2].z;
-  float B = -2.0 * far * near / (far - near); //projectionMatrix[3].z;
+  //depth buffer encoding http://stackoverflow.com/questions/6652253/getting-the-true-z-value-from-the-depth-buffer
+  float zBuf = 0.5 * zNDC + 0.5;
 
-  depth  = 0.5 * (-A * depth + B) / depth + 0.5;
-
-  vColor = vec4(depth);
+  vColor = vec4(zBuf);
 }
 
 #endif
