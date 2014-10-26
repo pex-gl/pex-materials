@@ -1,6 +1,6 @@
 {
   "name": "pex-materials",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Additional glsl materials for the pex library",
   "keywords": [
     "geometry",
