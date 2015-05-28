@@ -22,10 +22,13 @@ void main() {
 uniform sampler2D texture;
 uniform vec2 scale;
 uniform vec4 color;
+uniform bool discardAlpha;
 varying vec2 vTexCoord;
 
 void main() {
   gl_FragColor = texture2D(texture, vTexCoord * scale) * color;
+  if(discardAlpha && gl_FragColor.a < 0.1)
+  	discard;
 }
 
 #endif
