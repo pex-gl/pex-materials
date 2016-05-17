@@ -6,4 +6,5 @@ module.exports.Textured        = require('./textured');
 module.exports.Diffuse         = require('./diffuse');
 module.exports.MatCap          = require('./mat-cap');
 module.exports.PointSpriteSolidColor = require('./point-sprite-solid-color');
+module.exports.PointSpriteShowColors = require('./point-sprite-show-color');
 module.exports.PointSpriteTextured   = require('./point-sprite-textured');
