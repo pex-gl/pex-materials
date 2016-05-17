@@ -1,3 +1,7 @@
+#ifdef GL_ES
+precision highp float;
+#endif
+
 varying vec3 vNormalView;
 varying vec3 vLightDirView;
 
