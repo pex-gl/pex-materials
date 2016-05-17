@@ -20,6 +20,7 @@
     "pex-color": "0.0.1"
   },
   "dependencies": {
+    "brfs": "^1.4.3",
     "merge": "~1.2.0"
   },
   "repository": {
@@ -28,5 +29,10 @@
   },
   "bugs": "https://github.com/vorg/pex-materials/issues",
   "homepage": "https://github.com/vorg/pex-materials",
-  "license": "MIT"
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
+  }
 }
