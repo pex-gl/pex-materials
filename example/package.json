@@ -20,7 +20,7 @@
     "primitive-rounded-cube": "^1.0.2"
   },
   "scripts": {
-    "start": "beefy main.js:main.web.js --open -- -i plask -g glslify-promise/transform",
-    "build": "browserify main.js -i plask -g glslify-promise/transform -o main.web.js"
+    "start": "beefy main.js:main.web.js --open -- -i plask -g glslify-promise/transform -g brfs",
+    "build": "browserify main.js -i plask -g glslify-promise/transform -o main.web.js -g brfs"
   }
 }
