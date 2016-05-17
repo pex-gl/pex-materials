@@ -13,6 +13,7 @@ var Textured        = require('../textured');
 var Diffuse         = require('../diffuse');
 var MatCap          = require('../mat-cap');
 var PointSpriteSolidColor = require('../point-sprite-solid-color');
+var PointSpriteShowColors = require('../point-sprite-show-colors');
 var PointSpriteTextured   = require('../point-sprite-textured');
 
 var ASSETS_DIR = isBrowser ? 'assets' : __dirname + '/assets';
@@ -70,6 +71,7 @@ Window.create({
             { program: ctx.createProgram(Diffuse.Vert, Diffuse.Frag), uniforms: { uLightPos: [10,10,10], uDiffuseColor: [1,0,0,1]} },
             { program: ctx.createProgram(MatCap.Vert, MatCap.Frag), uniforms: { uTexture: this.matCapTexture }},
             { program: ctx.createProgram(PointSpriteSolidColor.Vert, PointSpriteSolidColor.Frag), uniforms: { uPointSize: 2, uColor: [1, 0, 0, 1] }},
+            { program: ctx.createProgram(PointSpriteShowColors.Vert, PointSpriteShowColors.Frag), uniforms: { uPointSize: 2 }},
             { program: ctx.createProgram(PointSpriteTextured.Vert, PointSpriteTextured.Frag), uniforms: { uPointSize: 10, uTexture: this.particleTexture, uColor: [1, 1, 0, 1] }, blendFunc: [ctx.SRC_COLOR, ctx.ONE]},
         ]
         }
