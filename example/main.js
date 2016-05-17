@@ -32,8 +32,9 @@ Window.create({
         try {
         var ctx = this.getContext();
         var res = this.getResources();
+        this.cells = grid(this.getWidth(), this.getHeight(), 5, 2, 0);
 
-        this.camera  = new PerspCamera(45, 1, 0.001, 20.0);
+        this.camera  = new PerspCamera(45, this.cells[0][2]/this.cells[0][3], 0.001, 20.0);
         this.camera.lookAt([0, 1, 3], [0, 0, 0]);
         ctx.setProjectionMatrix(this.camera.getProjectionMatrix());
 
@@ -60,7 +61,6 @@ Window.create({
         this.matCapTexture = ctx.createTexture2D(res.matCapImage);
         this.particleTexture = ctx.createTexture2D(res.particleImage);
 
-        this.cells = grid(this.getWidth(), this.getHeight(), 5, 2, 0);
         this.materials = [
             { program: ctx.createProgram(SolidColor.Vert, SolidColor.Frag), uniforms: { uColor:[1,0,0,1] }},
             { program: ctx.createProgram(ShowNormals.Vert, ShowNormals.Frag) },
